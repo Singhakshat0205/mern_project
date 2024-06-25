@@ -28,7 +28,8 @@ server.all('*', function(req, res, next) {
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://akshatsingh52002:HKPZqpqpL8BNisy1@cluster0.rmovj9z.mongodb.net/ecommmerceDatabase?retryWrites=true&w=majority&appName=Cluster0');
+  // await mongoose.connect('mongodb+srv://akshatsingh52002:HKPZqpqpL8BNisy1@cluster0.rmovj9z.mongodb.net/ecommmerceDatabase?retryWrites=true&w=majority&appName=Cluster0');
+  await mongoose.connect(process.env.MONGO_URL);
   
   //  await mongoose.connect('mongodb://127.0.0.1:27017/userData');
 
