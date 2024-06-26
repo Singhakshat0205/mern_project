@@ -21,6 +21,24 @@ server.all('*', function(req, res, next) {
   }
 });
 
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://todo-project-ruddy-seven.vercel.app');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+const allowedOrigins = ['https://todo-project-ruddy-seven.vercel.app', 'https://another-allowed-origin.com'];
+
+server.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+
 
 //db connection
 
