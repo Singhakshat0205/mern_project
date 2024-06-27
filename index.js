@@ -10,33 +10,7 @@ const productRouter= require('./routes/product')
 const userRouter= require('./routes/user');
 const { env } = require("process");
 
-server.all('*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  if ('OPTIONS' == req.method) {
-  res.sendStatus(200);
-  } else {
-    next();
-  }
-});
 
-server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://todo-project-ruddy-seven.vercel.app');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
-const allowedOrigins = ['https://todo-project-ruddy-seven.vercel.app', 'https://another-allowed-origin.com'];
-
-server.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
 
 
 
